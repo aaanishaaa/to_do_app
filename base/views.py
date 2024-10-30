@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Task
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy #goes back to the same page after submission
 
 class TaskList(ListView):   # Class-based view for listing tasks
@@ -17,3 +17,13 @@ class TaskCreate(CreateView):
     model = Task
     fields = '__all__'
     success_url = reverse_lazy('tasks') #redirects users to task
+    
+class TaskUpdate(UpdateView):
+    model= Task
+    fields = '__all__'
+    success_url = reverse_lazy('tasks') #redirects users to task
+    
+class DeleteView(DeleteView):
+    model = Task
+    context_object_name = 'task'
+    success_url = reverse_lazy('tasks')
