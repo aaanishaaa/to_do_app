@@ -3,6 +3,16 @@ from django.views.generic import ListView, DetailView
 from .models import Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy #goes back to the same page after submission
+from django.contrib.auth.views import LoginView
+
+class CustomLoginView(LoginView):
+    template_name = 'base/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('tasks')
+
 
 class TaskList(ListView):   # Class-based view for listing tasks
     model = Task
