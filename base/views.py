@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
@@ -33,8 +33,11 @@ class RegisterPage(FormView):
             login(self.request, user)
         return super()(RegisterPage,self).form_valid(form)
     
-    def get(self, request: HttpRequest, *args: str, **kwargs: reverse_lazy) -> HttpResponse:
-        return super().get(request, *args, **kwargs)
+    def get(self,*args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('tasks')
+        return super(RegisterPage, self).get(*args, **kwargs)
+            
     
 class TaskList(LoginRequiredMixin,ListView):   # Class-based view for listing tasks
     model = Task
@@ -56,10 +59,9 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('tasks') #redirects users to tasks
     
-    def form_invalid(self, form):
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
-    
     
     
 class TaskUpdate(LoginRequiredMixin, UpdateView):
