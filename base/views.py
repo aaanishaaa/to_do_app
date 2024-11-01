@@ -52,7 +52,7 @@ class TaskList(LoginRequiredMixin,ListView):   # Class-based view for listing ta
 class TaskDetail(LoginRequiredMixin, DetailView):  # Class-based view for showing task details
     model = Task
     context_object_name = 'task'  # Define the context variable used in the template
-    template_name = 'base/task.html'
+    template_name = 'base/task_detail.html'
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
