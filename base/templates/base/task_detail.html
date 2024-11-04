@@ -1,3 +1,5 @@
+{% extends 'base/main.html' %}
+{% block content %}
 <h1>Task Detail</h1>
 
 <div>
@@ -6,3 +8,5 @@
     <p><strong>Created on:</strong> {{ task.created_at }}</p>  <!-- Display creation date (if applicable) -->
     <p><strong>Status:</strong> {{ task.status }}</p>  <!-- Display task status (if applicable) -->
 </div>
+
+{% endblock content %}

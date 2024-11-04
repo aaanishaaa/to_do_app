@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--inheritance wla html template-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TO DO LIST</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(212, 212, 212);
+                font-family: "Roboto", sans-serif;
+                padding-top: 50px;
+
+            }
+            .container{
+                max-width: 550px;
+                margin: auto;
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15), 
+                0px 6px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+            h1,h2,h3,h4,h5,h6{
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            a,p{
+                color: rgb(0, 57, 57);
+            }
+            .header-bar{
+                display: flex;
+                justify-content: space-between;
+                color: aliceblue;
+                background-color: rgb(0, 25, 48);
+                padding: 10px;
+                border-radius: 8px 8px 0 0;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </body>
+</html>
